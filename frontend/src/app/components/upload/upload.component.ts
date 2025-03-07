@@ -2,6 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FileUploadService } from '../../services/file-upload.service';
+import { CityStore } from '../../store/city.store';
+import { Observable } from 'rxjs';
+import { City } from '../../models/City';
 
 @Component({
   selector: 'app-upload',
@@ -19,8 +22,20 @@ export class UploadComponent implements OnInit {
   dataUri!: string;
   blob!: Blob;
 
+
+  // From day 37
+  private cityStore = inject(CityStore) // Data coming in from indexedDB
+  citiesList$!: Observable<City[]>;
+  selectedCity?: string
+
   ngOnInit(): void {
     this.form = this.createForm();
+    this.loadCities()
+  }
+  
+  loadCities() {
+    this.citiesList$ = this.cityStore.cities$; // Data is unpopulated
+    this.cityStore.loadCities(); // Calls effect to get data from indexDB.
   }
   
   async upload() {
@@ -30,6 +45,15 @@ export class UploadComponent implements OnInit {
     }
     this.blob = this.dataURItoBlob(this.dataUri);
     const formValue = this.form.value;
+
+    this.citiesList$.subscribe((cities) => {
+      const city = cities.find((city) => {city.code === this.selectedCity});
+      console.log(city?.cityName);
+      this.selectedCity = city?.cityName;
+    });
+
+    console.log("Selected city: ", this.selectedCity)
+    
     // this.fileuploadService.upload(formValue, this.blob)
     //   .then((result) => {
     //     console.log(result)

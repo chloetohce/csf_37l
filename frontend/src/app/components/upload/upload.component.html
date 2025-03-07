@@ -3,4 +3,16 @@
     <input type="file" (change)="onFileChange($event)" accept="image/png">
     <input type="text" formControlName="comments" placeholder="comments">
     <button type="submit">Submit</button>
+
+    <br>
+    <br>
+
+    <div>
+        <label for="cities">Cities</label>
+        <select name="city" id="cities" [(value)]="selectedCity">
+            @for (c of citiesList$ | async; track $index) {
+                <option [value]="c.code">{{c.cityName}}</option>
+            }
+        </select>
+    </div>
 </form>

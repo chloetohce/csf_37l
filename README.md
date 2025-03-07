@@ -1,4 +1,11 @@
-# CSF Day 26 Lecture
+# CSF Day 36 Lecture
+
+## Commands run
+
+1. `npm i dexie`
+2. `ng add @ngrx/component-store@latest`
+    - If above fails, use `npm i @ngrx/component-store`
+
 
 ## Proxying to Spring Boot backend
 1. Create a config file
@@ -29,3 +36,8 @@ Refer to: [Proxy API requests to another server](https://stackoverflow.com/quest
 ## Building
 1. `ng build`
 2. Copy everything in the /dist/frontend folder, and move it to the static folder in the server backend.
+
+
+## Questions
+- What are the various ways to load data in a browser on startup?
+- What is state in application?

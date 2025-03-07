@@ -7,12 +7,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { UploadComponent } from './components/upload/upload.component';
 import { ViewImageComponent } from './components/view-image/view-image.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadComponent,
-    ViewImageComponent
+    ViewImageComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,

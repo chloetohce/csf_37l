@@ -36,9 +36,9 @@ public class FileUploadController {
 
             String id = fileUploadRepository.upload(file, comments);
 
-            if (id != null && !id.isEmpty()) {
-                String s3endpointUrl = this.s3Service.upload(file, comments, id);
-            }
+            // if (id != null && !id.isEmpty()) {
+            //     String s3endpointUrl = this.s3Service.upload(file, comments, id);
+            // }
 
             return ResponseEntity.ok()
                 .body("{\"id\": \"%s\"}".formatted(id));
