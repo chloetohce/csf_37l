@@ -41,3 +41,4 @@ Refer to: [Proxy API requests to another server](https://stackoverflow.com/quest
 ## Questions
 - What are the various ways to load data in a browser on startup?
 - What is state in application?
+- Would the citieslist be dynamicaly updated if we add in a new city?
